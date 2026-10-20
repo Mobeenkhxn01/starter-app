@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { authClient } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
+import { GMAIL_READONLY_SCOPE } from "@/lib/gmail/types";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -164,7 +165,11 @@ export function LoginForm({
                   variant="outline"
                   type="button"
                   onClick={() =>
-                    authClient.signIn.social({ provider: "google", callbackURL: "/dashboard" })
+                    authClient.signIn.social({
+                      provider: "google",
+                      callbackURL: "/dashboard",
+                      scopes: [GMAIL_READONLY_SCOPE],
+                    })
                   }
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

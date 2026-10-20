@@ -14,6 +14,8 @@ model User {
   email         String
   emailVerified Boolean   @default(false)
   image         String?
+  role          String    @default("user")
+  gmailAdminAccessGrantedAt DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
